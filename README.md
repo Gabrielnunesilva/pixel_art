@@ -33,20 +33,31 @@ pip install -r requirements.txt
 
 # Como utilizar:
 A usabilidade do programa é bem simples e intuitiva. No lado esquerdo você encontrará os campos **Escolher Imagem**, **Detalhamento de Pixels**, **Resolução Final**, **Paleta de Cores**.
+
 <br />
+
 1- Clique em **Escolher Imagem** e selecione a imagem que deseja converter;
 >Ao escolher a imagem, no campo será descrito o caminho da imagem selecionada. Além disso, no canto esquerdo essa imagem será exibida.
+
 <br />
+
 2- No campo **Detalhamento de Pixels**, defina o quão detalhada a nova imagem será (números mais altos deixam a imagem mais detalhada);
+
 <br />
+
 3- Selecione o tamanho da resolução que a imagem terá no campo **Resolução Final**;
+
 <br />
+
 4- É possivel definir qual paleta será utilizada no campo **Paleta de Cores**, 
 >A paleta **padrão** seleciona até 32 cores mais utilizadas na imagem inicial
 <br />
+
 5- Clique no botão **Gerar Pixel Art** para que a imagem seja convertida.
 >Após clicar no botão, a imagem é exibida no lado direito do Menu de configuração
+
 <br />
+
 6- Para Salvar a imagem convertida, basta clicar em **Salvar Pixel Art** e definir onde será salva.
 
 
