@@ -118,7 +118,7 @@ def salvar_imagem():
 # Interface Tkinter
 root = Tk()
 root.title("Pixel Art Generator")
-root.geometry("1100x700")
+root.geometry("1200x700")
 
 imagens_tk = []
 imagem_pixel_tk = None
@@ -141,7 +141,7 @@ btn_escolher = Button(frame_controls, text="Escolher Imagem", command=escolher_i
 btn_escolher.pack(pady=5)
 
 Label(frame_controls, text="Detalhamento dos Pixels (Padrão: 32)").pack()
-combo_res = ttk.Combobox(frame_controls, values=[8, 16, 24, 32, 48, 64, 96, 128])
+combo_res = ttk.Combobox(frame_controls, values=[8, 16, 24, 32, 48, 64, 96, 128, 256, 512])
 combo_res.set(32)
 combo_res.pack(pady=2)
 
