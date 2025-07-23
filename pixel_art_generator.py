@@ -31,7 +31,7 @@ PALETAS = {
 def escolher_imagem():
     caminho = filedialog.askopenfilename(
         title="Selecione uma imagem",
-        filetypes=[("Imagens", "*.png;*.jpg;*.jpeg;*.bmp;*.gif")]
+        filetypes=[("Imagens", "*.png;*.jpg;*.jpeg;*.bmp;*.gif;")]
     )
     if caminho:
         label_arquivo.config(text=caminho)
@@ -74,19 +74,29 @@ def gerar_pixel_art():
         return
 
     tamanho = int(combo_res.get())
-    resolucao_final = int(combo_output_res.get())
+    resolucao_selecionada = combo_output_res.get()
+    img = Image.open(caminho)
+
+    if resolucao_selecionada == "Manter resolução":
+        resolucao_final = img.size  # mantém a resolução original (largura, altura)
+    else:
+        resolucao_final = int(resolucao_selecionada)
     nome_paleta = combo_paleta.get()
     paleta_rgb = PALETAS[nome_paleta]
 
     img = Image.open(caminho)
     small = img.resize((tamanho, tamanho), resample=Image.NEAREST)
     quantizada = aplicar_paleta(small, paleta_rgb)
-    pixel_art = quantizada.resize((resolucao_final, resolucao_final), resample=Image.NEAREST)
+    if isinstance(resolucao_final, tuple):
+        pixel_art = quantizada.resize(resolucao_final, resample=Image.NEAREST)
+    else:
+        pixel_art = quantizada.resize((resolucao_final, resolucao_final), resample=Image.NEAREST)
 
     imagem_pixel_art = pixel_art
     exibir_pixel_art_preview(pixel_art)
     btn_salvar.config(state="normal")
     label_status.config(text="Pré-visualização gerada.\nClique em 'Salvar' para gravar.")
+    
 
 def exibir_pixel_art_preview(img):
     global imagem_pixel_tk
@@ -146,7 +156,7 @@ combo_res.set(32)
 combo_res.pack(pady=2)
 
 Label(frame_controls, text="Resolução final (Padrão: 512 px)").pack()
-combo_output_res = ttk.Combobox(frame_controls, values=[128, 256, 320, 512, 640, 800, 1024, 2048])
+combo_output_res = ttk.Combobox(frame_controls, values=["Manter resolução", 128, 256, 320, 512, 640, 800, 1024, 2048])
 combo_output_res.set(512)
 combo_output_res.pack(pady=2)
 
